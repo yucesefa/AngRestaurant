@@ -9,6 +9,10 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { MenuComponent } from './menu/menu.component';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { CategoryComponent } from './admin/category/category.component';
+import { FormsModule } from '@angular/forms';
+import { AdminMenuComponent } from './admin/admin-menu/admin-menu.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +22,18 @@ import { MenuComponent } from './menu/menu.component';
     AdminLayoutComponent,
     AboutComponent,
     ContactComponent,
-    MenuComponent
+    MenuComponent,
+    CategoryComponent,
+    AdminMenuComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(withInterceptorsFromDi())  //http istekleri atarken araya girip farklı işlemleri ele almak için kullanılır
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
